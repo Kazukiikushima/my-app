@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @estimate.name %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @estimate.fee %>
+</p>
+
+<p>
+  <strong>Floortype:</strong>
+  <%= @estimate.floortype %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @estimate.place %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @estimate.image %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @estimate.comment %>
+</p>
+
+<%= link_to 'Edit', edit_estimate_path(@estimate) %> |
+<%= link_to 'Back', estimates_path %>

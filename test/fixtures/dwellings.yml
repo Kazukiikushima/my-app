@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimate_id: 
+  person_id: 
+  comment: MyText
+  start_time: 2016-11-09
+  end_time: 2016-11-09
+
+two:
+  estimate_id: 
+  person_id: 
+  comment: MyText
+  start_time: 2016-11-09
+  end_time: 2016-11-09
