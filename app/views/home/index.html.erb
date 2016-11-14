@@ -1,2 +1,41 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>住まい検索</h1>
+<%= form_tag root_path , method: :get do %>
+      場所：<%= text_field_tag :a , params[:a], placeholder: "場所を入力", required: false %><br><br>
+      家賃：<%= text_field_tag :b , params[:b], placeholder: "値段を入力", required: false %>万以下<br><br>
+      職業：<%= text_field_tag :c , params[:c], placeholder: "職業を入力", required: false %><br><br>
+      <%= submit_tag "送信", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
+<% end %><br><br><br><br>
+
+<% unless @estimates == nil %>
+
+<table>
+  <tbody>
+    <% @estimates.each do |estimate| %>
+
+      <tr>
+        <td><%= image_tag estimate.avatar.url %></td>
+        <td>
+          <div class = "estimate_index" >名前：<%= estimate.name %>
+        <p>家賃：<%= estimate.fee %>万円</p>
+        <p>間取り：<%= estimate.floortype %></p>
+        <p>場所：<%= estimate.place %></p>
+        <p>備考：<%= estimate.comment %></p>
+        <p>空いてる部屋数：<%= estimate.vacants %></p>
+        <p><%= link_to 'Show', estimate %>
+           <%= link_to 'Edit', edit_estimate_path(estimate) %>
+           <%= link_to 'Destroy', estimate, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user["type"] == "Person" %>
+          <% if Favorite.find_by(estimate_id: estimate.id, person_id: current_user.id ) %>
+            <%= link_to "UnFavo", favorite_path(estimate.id), method: :delete %>
+          <% elsif %>
+            <%= link_to "Favo", favorite_estimate_path(estimate.id), method: :post %>
+            </div>
+        </td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

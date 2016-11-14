@@ -1,0 +1,23 @@
+<p>
+  <strong>ニックネーム:</strong>
+  <%= @dwelling.person.name %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @dwelling.comment %>
+</p>
+
+<p>
+  <strong>居住開始時期:</strong>
+  <%= @dwelling.start_time %>
+</p>
+
+<p>
+  <strong>居住終了（予定）:</strong>
+  <%= @dwelling.end_time %>
+</p>
+
+<% if current_user.id = @dwelling.person.id %>
+  <%= link_to 'Edit', edit_dwelling_path(@dwelling) %>
+<% end %>

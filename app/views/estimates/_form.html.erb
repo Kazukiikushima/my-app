@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  
+  
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -20,16 +25,16 @@
     <%= f.number_field :fee %>
   </div>
   <div class="field">
+    <%= f.label :vacants %><br>
+    <%= f.number_field :vacants %>
+  </div>
+  <div class="field">
     <%= f.label :floortype %><br>
     <%= f.text_field :floortype %>
   </div>
   <div class="field">
     <%= f.label :place %><br>
     <%= f.text_field :place %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
   </div>
   <div class="field">
     <%= f.label :comment %><br>

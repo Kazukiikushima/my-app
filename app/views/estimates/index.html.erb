@@ -2,31 +2,32 @@
 
 <h1>Listing Estimates</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Fee</th>
-      <th>Floortype</th>
-      <th>Place</th>
-      <th>Image</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
+
+<table>
   <tbody>
     <% @estimates.each do |estimate| %>
+
       <tr>
-        <td><%= estimate.name %></td>
-        <td><%= estimate.fee %></td>
-        <td><%= estimate.floortype %></td>
-        <td><%= estimate.place %></td>
-        <td><%= estimate.image %></td>
-        <td><%= estimate.comment %></td>
-        <td><%= link_to 'Show', estimate %></td>
-        <td><%= link_to 'Edit', edit_estimate_path(estimate) %></td>
-        <td><%= link_to 'Destroy', estimate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag estimate.avatar.url %></td>
+        <td><div class = "estimate_index" >名前：<%= estimate.name %>
+        <p>家賃：<%= estimate.fee %>万円</p>
+        <p>間取り：<%= estimate.floortype %></p>
+        <p>場所：<%= estimate.place %></p>
+        <p>備考：<%= estimate.comment %></p>
+        <p>空いてる部屋数：<%= estimate.vacants %></p>
+        <%= link_to 'Show', estimate %>
+           <%= link_to 'Edit', edit_estimate_path(estimate) %>
+           <%= link_to 'Destroy', estimate, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user["type"] == "Person" %>
+          <% if Favorite.find_by(estimate_id: estimate.id, person_id: current_user.id ) %>
+            <%= link_to "UnFavo", favorite_path(estimate.id), method: :delete %>
+          <% elsif %>
+            <%= link_to "Favo", favorite_estimate_path(estimate.id), method: :post %>
+            </td>
+        </div>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

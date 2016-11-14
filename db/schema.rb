@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109090519) do
+ActiveRecord::Schema.define(version: 20161114085108) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "sender_id"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20161109090519) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "vacants"
+    t.string   "avatar"
   end
 
   add_index "estimates", ["realtor_id"], name: "index_estimates_on_realtor_id"

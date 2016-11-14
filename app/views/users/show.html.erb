@@ -1,0 +1,31 @@
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @user.sex %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @user.job %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @user.comment %>
+</p>
+
+居住評価：
+<% @dwellings.each do |dwelling| %>
+   <%=link_to dwelling.estimate.name, dwelling_path(dwelling.id) %>
+<% end %><br><br>
+
+<%= link_to 'Home', root_path %> |

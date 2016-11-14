@@ -1,10 +1,30 @@
 Rails.application.routes.draw do
   root to: "home#index"
   
-  resources :estimates
+  resources :estimates do
+    member do
+    post 'favorite', to: 'favorites#create'
+    post 'dwelling', to: 'dwellings#create'
+    end
+    
+    collection do
+         get 'search'
+    end
+  end
 
   devise_for :users
   
+  resources :users, only: [:show, :new] do
+    member do
+        get 'contact', to: 'contacts#new'
+    end
+  end
+  
+  resources :dwellings, only: [:show, :destroy, :edit, :update]
+  
+  resources :contacts, only: [:create]
+  
+  resources :favorites, only: [:destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

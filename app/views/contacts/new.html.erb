@@ -1,0 +1,15 @@
+<div class="panel-body">
+    <% @contacts.each do |contact| %>
+      <% user = User.find(contact.sender_id) %>
+      <span class="label label-info"><%= user["name"] %></span>
+      <%= contact.comment %>
+      <br>
+    <% end %>
+</div><br>
+
+<%= form_for(@contact) do |f| %>
+  内容:
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :receiver_id %>
+  <%= f.submit %>
+<% end %>
